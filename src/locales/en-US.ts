@@ -76,6 +76,7 @@ export default {
   },
   store: {
     siderButton: 'Prompt Store',
+		changeKeyButton: 'Change Key',
     local: 'Local',
     online: 'Online',
     title: 'Title',

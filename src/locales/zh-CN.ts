@@ -76,6 +76,7 @@ export default {
   },
   store: {
     siderButton: '提示词商店',
+    changeKeyButton: '更换KEY',
     local: '本地',
     online: '在线',
     title: '标题',

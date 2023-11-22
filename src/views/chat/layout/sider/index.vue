@@ -6,7 +6,7 @@ import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { PromptStore, SvgIcon } from '@/components/common'
+import { PromptStore, SvgIcon ,ChangeKey } from '@/components/common'
 import { t } from '@/locales'
 
 const appStore = useAppStore()
@@ -16,6 +16,7 @@ const dialog = useDialog()
 
 const { isMobile } = useBasicLayout()
 const show = ref(false)
+const showChange = ref(false)
 
 const collapsed = computed(() => appStore.siderCollapsed)
 
@@ -96,6 +97,7 @@ watch(
         <div class="flex-1 min-h-0 pb-4 overflow-hidden">
           <List />
         </div>
+				<!-- 提示词商城 -->
         <div class="flex items-center p-4 space-x-4">
           <div class="flex-1">
             <NButton block @click="show = true">
@@ -106,6 +108,14 @@ watch(
             <SvgIcon icon="ri:close-circle-line" />
           </NButton>
         </div>
+				<!-- 更换KEY -->
+				<div class="flex items-center p-4 space-x-4">
+					<div class="flex-1">
+						<NButton block @click="showChange = true">
+							{{ $t('store.changeKeyButton') }}
+						</NButton>
+					</div>
+				</div>
       </main>
       <Footer />
     </div>
@@ -114,4 +124,5 @@ watch(
     <div v-show="!collapsed" class="fixed inset-0 z-40 w-full h-full bg-black/40" @click="handleUpdateCollapsed" />
   </template>
   <PromptStore v-model:visible="show" />
+  <ChangeKey v-model:visible="showChange" />
 </template>
